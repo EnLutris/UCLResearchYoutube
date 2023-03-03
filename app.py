@@ -2,7 +2,7 @@ from fastapi import FastAPI, Body
 from pydantic import BaseModel
 from typing import Literal
 import os
-from utils.youtube_comments import feriha
+from utils.youtube_comments import get_youtube_comments
 from fastapi import FastAPI, File, UploadFile
 import re
 
@@ -24,7 +24,7 @@ async def process(file: UploadFile = File(...)):
         url_list = re.split(',', content.decode('utf-8'))
         comment_list = []
         for url in url_list:
-           comments = feriha(url)
+           comments = get_youtube_comments(url)
            comment_list.append(comments)
         return comment_list
           
@@ -32,5 +32,5 @@ async def process(file: UploadFile = File(...)):
 @app.post("/comments")
 async def youtube_comments(url: str):
   print(url)
-  comments = feriha(url)
+  comments = get_youtube_comments(url)
   return comments
