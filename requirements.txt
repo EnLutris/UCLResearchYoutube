@@ -1,0 +1,6 @@
+pandas
+fire
+youtube-comment-downloader
+openpyxl
+fastapi
+pydantic
