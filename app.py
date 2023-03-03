@@ -14,7 +14,7 @@ app = FastAPI(PORT = port)
 async def status_check():
   return "alive"
 
-@app.post("/uploadfile/")
+@app.post("/uploadfile")
 async def process(file: UploadFile = File(...)):
     
     if not file:
@@ -29,7 +29,7 @@ async def process(file: UploadFile = File(...)):
         return comment_list
           
     
-@app.post("/comments")
+@app.post("/url")
 async def youtube_comments(url: str):
   print(url)
   comments = get_youtube_comments(url)
