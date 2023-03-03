@@ -4,3 +4,5 @@ youtube-comment-downloader
 openpyxl
 fastapi
 pydantic
+uvicorn
+python-multipart
