@@ -1,7 +1,6 @@
 from itertools import islice
 from youtube_comment_downloader import *
 from datetime import datetime
-from langdetect import detect
 from deep_translator import GoogleTranslator
 
 def get_youtube_comments(url):
@@ -12,8 +11,7 @@ def get_youtube_comments(url):
         comment_datetime = datetime.fromtimestamp(comment['time_parsed'])
         comment_date = comment_datetime.strftime("%m/%d/%Y")
         comment_time = comment_datetime.strftime("%H:%M:%S")
-        detected_lang = detect(comment['text'])
         comment_en = GoogleTranslator(source='auto', target='en').translate(comment['text'])
-        comment_details = {'url': url, 'comment':comment['text'], 'comment_lang': detected_lang, 'comment_en':comment_en, 'date':comment_date, 'time': comment_time}
+        comment_details = {'url': url, 'comment':comment['text'], 'comment_en':comment_en, 'date':comment_date, 'time': comment_time}
         comment_list.append(comment_details)
     return comment_list

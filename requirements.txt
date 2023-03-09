@@ -7,4 +7,3 @@ pydantic
 uvicorn
 python-multipart
 deep-translator
-langdetect
